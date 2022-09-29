@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
         bio: 'Teacher from Nigeria',
         posts_counter: 0
       )
-
+      
       8.times.collect do
         Post.create(
           title: 'Lorem ipsum dolor eit.',
