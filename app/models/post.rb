@@ -12,7 +12,7 @@ class Post < ApplicationRecord
 
   # update post counter
   def update_posts_counter
-    user.increament!(:posts_counter, 1)
+    user.increment!(:posts_counter, 1)
   end
 
   # fetch recent comment
