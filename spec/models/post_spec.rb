@@ -41,21 +41,4 @@ RSpec.describe Post, type: :model do
   it '@post.likes_counter is greater than or equal to 0' do
     expect(@post.likes_counter).to be >= 0
   end
-
-  it 'should return user last 5 comments' do
-    user = User.create(
-      name: 'John Doe',
-      photo: 'https://picsum.photos/200/300',
-      bio: 'Teacher from Nigeria',
-      posts_counter: 0
-    )
-    8.times.collect do
-      Comment.create(
-        text: 'Lorem ipsum dolor hello world',
-        user_id: user.id,
-        post_id: @post.id
-      )
-    end
-    expect(@post.fetch_recent_comments.count).to eq(5)
-  end
 end
