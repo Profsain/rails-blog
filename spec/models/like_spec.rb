@@ -1,4 +1,6 @@
-require 'rails_helper.rb'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   before(:all) do
@@ -17,8 +19,8 @@ RSpec.describe Like, type: :model do
       likes_counter: 0
     )
 
-   it 'like counter should be incremented by 1' do
-      like = Like.create(
+    it 'like counter should be incremented by 1' do
+      Like.create(
         user_id: @user.id,
         post_id: @post.id
       )

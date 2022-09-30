@@ -1,4 +1,6 @@
-require 'rails_helper.rb'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   before(:all) do
@@ -18,7 +20,7 @@ RSpec.describe Post, type: :model do
     )
   end
 
-  it '@post created is valid' do 
+  it '@post created is valid' do
     expect(@post).to be_valid
   end
 

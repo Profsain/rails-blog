@@ -1,4 +1,6 @@
-require 'rails_helper.rb'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   before(:all) do
@@ -19,7 +21,7 @@ RSpec.describe Comment, type: :model do
   end
 
   it 'comment counter should be incremented by 1' do
-    comment = Comment.create(
+    Comment.create(
       user_id: @user.id,
       post_id: @post.id,
       text: 'Lorem ipsum dolor hello world'
