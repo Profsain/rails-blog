@@ -2,7 +2,9 @@
 
 class UsersController < ApplicationController
   # Get all users
-  def index; end
+  def index
+    @users = User.all
+  end
 
   # Get single user by id
   def show; end
