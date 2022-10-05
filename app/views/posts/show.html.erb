@@ -1,2 +1,15 @@
-<h1>Show post details</h1>
-<p>Read complete post information</p>
+<div class='postCard'>
+  <div class='postHeader'>
+    <h3>"<%= @post.title %>" by: <%= User.find(@post.user_id).name %></h3>
+    <div class='likesComments'>
+      <p>Comments: <%= @post.comments_counter.nil? ? 0 : @post.comments_counter %></p>
+      <p>Likes: <%= @post.likes_counter.nil? ? 0 : @post.likes_counter %></p>
+    </div>
+  </div>
+  <p><%= @post.text %></p>
+</div>
+<div class='commentsList'>
+  <% @post.comments.each do |comment| %>
+    <p><%= User.find(comment.user_id).name %>: <%= comment.text %></p>
+  <% end %>
+</div>

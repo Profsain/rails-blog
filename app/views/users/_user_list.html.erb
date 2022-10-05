@@ -1,0 +1,7 @@
+<div id="<%= dom_id user%>">
+  <%= image_tag user.photo, :class => 'userPhoto', alt: 'user-photo'%>
+  <div>
+    <h3><%= user.name %></h3>
+    <p>Number of post: <%= user.posts_counter.nil? ? 0 : user.posts_counter %></p>
+  </div>
+</div>
