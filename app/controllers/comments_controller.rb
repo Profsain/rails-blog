@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    @comment.author = current_user
+    @comment.user = current_user
 
     @comment.save if @comment.valid?
     redirect_to post_path(@comment.post)

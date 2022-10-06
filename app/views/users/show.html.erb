@@ -4,6 +4,7 @@
     <h3 class='title'>Bio</h3>
     <p><%= @user.bio %></p>
   </div>
+  <%= link_to 'Add Post', new_post_path %>
 
    <div>
     <% @user.fetch_recent_posts.each do |post| %>

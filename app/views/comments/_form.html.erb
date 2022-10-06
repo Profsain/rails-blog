@@ -1,0 +1,9 @@
+<%= form_with model: Comment do |form|%>
+  <%= form.hidden_field :post_id, value: @post.id%>
+  <div>
+    <%= form.text_area :text, placeholder: 'Enter comment.......' %>
+  </div>
+  <div>
+    <button type="submit">Comment</button>
+  </div>
+<% end %>

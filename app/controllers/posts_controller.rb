@@ -5,23 +5,24 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts
   end
-
+  
   def show
-    @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
+    @post = @user ? @user.posts.find(params[:id]) : Post.find(params[:id])
   end
 
   def new; end
 
   def create
     @post = Post.new(post_params)
-    @post.user = current_user
+    @user = current_user
+    @post.user = @user
 
-    if post.valid?
-      @post.save
-      redirect_to user_posts_path(current_user)
+    if @post.save
+      flash[:notice] = 'Post was successfully created.'
+      redirect_to user_posts_path(@user)
     else
-      redirect_to new_user_post_path(current_user)
+      flash[:alert] = 'Post was not created.'
+      redirect_to new_post_path
     end
   end
 
