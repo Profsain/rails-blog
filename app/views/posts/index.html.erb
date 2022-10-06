@@ -1,5 +1,5 @@
 <div>
-  <%= render partial: 'users/user_list', locals: { user: @user } %>
+  <%= render partial: 'users/user', locals: { user: @user } %>
   <% @posts.each do |post| %>
     <div class='postCard'>
       <h3><%=link_to post.title, user_post_path(@user.id, post), :class => 'post-title'%></h3>

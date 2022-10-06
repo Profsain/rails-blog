@@ -1,0 +1,7 @@
+<div id="<%= dom_id user%>" class="userCard">
+  <%= image_tag user.photo, :class => 'userPhoto', alt: 'user-photo' %>
+  <div class="userInfo">
+    <h3><%= link_to user.name, user %></h3>
+    <p class="postCount">Number of post: <%= user.posts_counter.nil? ? 0 : user.posts_counter %></p>
+  </div>
+</div>
