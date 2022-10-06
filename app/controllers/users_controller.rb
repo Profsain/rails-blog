@@ -7,5 +7,7 @@ class UsersController < ApplicationController
   end
 
   # Get single user by id
-  def show; end
+  def show
+    @user = User.find(params[:id])
+  end
 end

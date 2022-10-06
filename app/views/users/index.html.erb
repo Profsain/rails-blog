@@ -1,2 +1,5 @@
-<h1>List of all users</h1>
-<p>All user are listed here</p>
+<h1>Blog Users</h1>
+<% @users.each do |user| %>
+  <%= render partial: 'user', locals: { user: user } %>
+<% end %>
+
