@@ -45,7 +45,8 @@ body {
   text-align: right;
 }
 
-.bio, .postCard {
+.bio,
+.postCard {
   border-bottom: 1px solid #ccc;
 }
 
