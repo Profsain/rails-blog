@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   def create
     @like = Like.new like_params
@@ -8,7 +10,8 @@ class LikesController < ApplicationController
   end
 
   private
-    def like_params
-      params.require(:like).permit(:post_id)
-    end
+
+  def like_params
+    params.require(:like).permit(:post_id)
+  end
 end

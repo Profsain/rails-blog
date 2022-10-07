@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts
   end
-  
+
   def show
     @post = @user ? @user.posts.find(params[:id]) : Post.find(params[:id])
   end
@@ -27,14 +27,14 @@ class PostsController < ApplicationController
   end
 
   private
-  
+
   def fetch_user
     return nil unless params[:user_id]
+
     @user = User.find(params[:user_id])
   end
 
   def post_params
     params.require(:post).permit(:title, :text)
   end
-
 end
