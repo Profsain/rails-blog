@@ -8,8 +8,14 @@
   </div>
   <p><%= @post.text %></p>
 </div>
+<div>
+  <%= render partial: 'likes/form', locals: {post_id: @post.id}%>
+</div>
 <div class='commentsList'>
   <% @post.comments.each do |comment| %>
     <p><%= User.find(comment.user_id).name %>: <%= comment.text %></p>
   <% end %>
+</div>
+<div>
+  <%= render partial: 'comments/form', locals: { post: @post } %>
 </div>
