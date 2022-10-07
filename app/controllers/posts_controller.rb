@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @user = User.first
+    @user = current_user
     @post.user = @user
 
     if @post.save
