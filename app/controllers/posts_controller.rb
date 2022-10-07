@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :fetch_user, only: %i[index show]
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
@@ -14,14 +15,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @user = current_user
+    @user = User.first
     @post.user = @user
 
     if @post.save
       flash[:notice] = 'Post was successfully created.'
       redirect_to user_posts_path(@user)
     else
-      flash[:alert] = 'Post was not created.'
       redirect_to new_post_path
     end
   end

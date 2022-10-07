@@ -1,9 +1,10 @@
-<%= form_with model: Comment do |form|%>
+<%= form_with(model: Comment) do |form|%>
   <%= form.hidden_field :post_id, value: @post.id%>
   <div>
-    <%= form.text_area :text, placeholder: 'Enter comment.......' %>
+    <%= form.text_area :text, placeholder: 'Enter comment.......', size: '24x7' %>
   </div>
   <div>
-    <button type="submit">Comment</button>
+    <%# <button type="submit">Comment</button> %>
+    <%= submit_tag "Comment"%>
   </div>
 <% end %>

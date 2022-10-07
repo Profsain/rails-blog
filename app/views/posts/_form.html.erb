@@ -1,11 +1,11 @@
-<%= form_with model: Post do |form| %>
+<%= form_with(model: Post) do |form| %>
   <div>
     <%= form.text_field :title, placeholder: 'Post Title' %>
   </div>
   <div>
-    <%= form.text_area :text, placeholder: 'Enter post.......' %>
+    <%= form.text_area :text, placeholder: 'Enter post.......', size: '29x14' %>
   </div>
   <div>
-    <button type="submit">Post</button>
+    <%= submit_tag "Add Post" %>
   </div>
 <% end %>
