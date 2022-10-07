@@ -2,16 +2,19 @@
 
 class PostsController < ApplicationController
   before_action :fetch_user, only: %i[index show]
+
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts
+    @posts = @user ? @user.posts : Post.all
   end
 
   def show
     @post = @user ? @user.posts.find(params[:id]) : Post.find(params[:id])
   end
 
-  def new; end
+  def new
+    @post = Post.new
+  end
 
   def create
     @post = Post.new(post_params)
