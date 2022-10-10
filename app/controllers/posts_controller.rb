@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
@@ -25,7 +24,6 @@ class PostsController < ApplicationController
       redirect_to new_post_path
     end
   end
-
 
   def show
     @post = @user ? @user.posts.find(params[:id]) : Post.find(params[:id])

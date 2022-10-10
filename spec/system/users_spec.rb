@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
@@ -20,8 +22,6 @@ RSpec.describe 'Users', type: :system do
         expect(page).to have_link(href: user_path(user))
       end
     end
-
-   
   end
 
   describe 'Show' do
