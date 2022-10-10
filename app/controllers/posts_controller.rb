@@ -1,47 +1,46 @@
-# frozen_string_literal: true
-
 class PostsController < ApplicationController
-  
+
+  before_action :fetch_author, only: %i[index show]
+
   def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts
+    @posts = @user ? @user.posts.includes(:comments, :user) : Post.includes(:comments, :user).all
   end
 
-  def new
-    @post = Post.new
+  def show
+    @post = @user ? @user.posts.find(params[:id]) : Post.find(params[:id])
   end
+
+  def new; end
 
   def create
-    post = Post.new(post_params)
+    @post = Post.new post_params
     @user = current_user
-    # post.user = @user
+    @post.user = @user
 
-    respond_to do |format|
-      if post.save
-        format.html { redirect_to user_posts_path(@user), notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: post }
-      else
-        format.html { render :new }
-        format.json { render json: post.errors, status: :unprocessable_entity }
-      end
+    if @post.valid?
+      @post.save
+
+      redirect_to user_posts_path(@user)
+    else
+      redirect_to new_post_path
     end
   end
 
+  def destroy
+    Post.destroy(params[:id])
 
-  def show
-   @user = User.find(params[:user_id])
-    @post = Post.find(params[:id])
+    redirect_to @user ? user_posts_path(@user) : posts_path
   end
 
   private
 
-  def fetch_user
+  def fetch_author
     return nil unless params[:user_id]
 
     @user = User.find(params[:user_id])
   end
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :text)
+    params.require(:post).permit(:title, :text)
   end
 end
