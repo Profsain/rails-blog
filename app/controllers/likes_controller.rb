@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
+  def new
+    @like = Like.new
+  end
+
   def create
-    @like = Like.new like_params
+    @like = Like.new(like_params)
     @user = current_user
     @like.user = @user
 
