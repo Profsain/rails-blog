@@ -31,6 +31,25 @@ RSpec.describe 'Posts testing', type: :system do
       expect(page).to have_css("img[src*=\"#{@user.photo}\"]")
       expect(page).to have_text("#{@user.posts_counter} post") if @user.posts_counter > 0
     end
+
+    it 'shows the first comments on a post' do
+      visit user_posts_path(@user)
+
+      comments = @posts[0].fetch_recent_comments
+
+      comments.each do |comment|
+        expect(page).to have_text(comment.text)
+      end
+    end
+
+    it 'redirects to the post show page when clicking the post card' do
+      visit user_posts_path(@user)
+
+      post = @posts[0]
+      click_on post.title
+
+      expect(page).to have_current_path user_post_path(@user, post)
+    end
   end
 
   describe 'Show' do

@@ -11,16 +11,22 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
+    @post = Post.new(post_params)
     @user = current_user
-    post.user = @user
+    @post.likes_counter = 0
+    @post.comments_counter = 0
+    @post.user = @user
 
-    if post.save
-      puts 'Post saved'
-      flash[:notice] = 'Post was successfully created.'
+    puts '================'
+    puts @post.valid?
+    puts @post.errors.full_messages
+    if @post.valid?
+      puts 'Post is valid'
+      @post.save
+
       redirect_to user_posts_path(@user)
     else
-      puts 'Post not saved'
+      puts 'Post is invalid'
       redirect_to new_post_path
     end
   end

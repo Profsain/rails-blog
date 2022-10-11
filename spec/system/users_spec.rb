@@ -22,6 +22,15 @@ RSpec.describe 'Users', type: :system do
         expect(page).to have_link(href: user_path(user))
       end
     end
+
+    it 'redirects to user show page when clicking the user' do
+      visit users_path
+
+      user = @users.first
+      click_on user.name, match: :first
+
+      expect(page).to have_current_path user_path(user)
+    end
   end
 
   describe 'Show' do
