@@ -35,27 +35,20 @@ RSpec.describe 'Posts testing', type: :system do
     it 'shows the first comments on a post' do
       visit user_posts_path(@user)
 
-      comments = @posts[0].fetch_recent_comments
-
-      comments.each do |comment|
-        expect(page).to have_text(comment.text)
-      end
+      @posts.each do |post|
+        post.fetch_recent_comments.each do |comment|
+          expect(page).to have_text(comment.text)
+        end
+      end 
     end
 
-    it 'redirects to the post show page when clicking the post card' do
+    it 'redirect to post show page when clicking the post' do
       visit user_posts_path(@user)
 
-      post = @posts[0]
-      click_on post.title
-
-      expect(page).to have_current_path user_post_path(@user, post)
-    end
-  end
-
-  describe 'Show' do
-    before(:all) do
-      @user = User.first
-      @post = @user.posts.first
+      @posts.each do |post|
+        click_on post.title, match: :first
+        expect(page).to have_current_path user_post_path(@user, post)
+      end
     end
   end
 end

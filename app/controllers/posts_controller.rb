@@ -17,16 +17,11 @@ class PostsController < ApplicationController
     @post.comments_counter = 0
     @post.user = @user
 
-    puts '================'
-    puts @post.valid?
-    puts @post.errors.full_messages
     if @post.valid?
-      puts 'Post is valid'
       @post.save
 
       redirect_to user_posts_path(@user)
     else
-      puts 'Post is invalid'
       redirect_to new_post_path
     end
   end
