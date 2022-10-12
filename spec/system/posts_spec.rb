@@ -29,7 +29,7 @@ RSpec.describe 'Posts testing', type: :system do
 
       expect(page).to have_text(@user.name)
       expect(page).to have_css("img[src*=\"#{@user.photo}\"]")
-      expect(page).to have_text("#{@user.posts_counter} post") if @user.posts_counter > 0
+      expect(page).to have_text(@user.posts_counter) if @user.posts_counter > 0
     end
 
     it 'shows the first comments on a post' do
