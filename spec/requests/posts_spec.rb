@@ -12,7 +12,7 @@ RSpec.describe 'Posts', type: :request do
   end
 
   describe 'GET /:id' do
-    before(:example) { get '/users/posts' }
+    before(:example) { get '/users' }
 
     it 'is a success' do
       expect(response).to have_http_status(:ok)

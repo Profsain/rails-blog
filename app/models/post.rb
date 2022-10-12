@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, class_name: 'User'
   has_many :comments
   has_many :likes
+  after_save :update_posts_counter
 
   # validation
   validates :title, presence: true, length: { maximum: 250 }
