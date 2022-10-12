@@ -39,7 +39,7 @@ RSpec.describe 'Posts testing', type: :system do
         post.fetch_recent_comments.each do |comment|
           expect(page).to have_text(comment.text)
         end
-      end 
+      end
     end
 
     it 'redirect to post show page when clicking the post' do
