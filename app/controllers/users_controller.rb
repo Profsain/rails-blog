@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :authenticate_auth!
+
   # Get all users
   def index
     @users = User.all
