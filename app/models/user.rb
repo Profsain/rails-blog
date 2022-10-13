@@ -7,7 +7,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-
   has_many :posts
   has_many :comments
   has_many :likes
@@ -24,7 +23,7 @@ class User < ApplicationRecord
   private
 
   def set_defaults
-    self.posts_counter = 0 if self.posts_counter.nil?
+    self.posts_counter = 0 if posts_counter.nil?
     self.photo = 'https://i.imgur.com/3ZQZ9Zm.png' if photo.nil?
   end
 end
