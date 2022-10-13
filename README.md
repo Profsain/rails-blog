@@ -28,6 +28,15 @@ To get a local copy up and running follow these simple example steps.
 ```
 bundle install
 ```
+
+### Run Server
+- Run the command bellow in your terminal to open mailcatcher server
+- Email confirmation link is display here
+
+```
+mailcatcher
+```
+
 ### Run tests
 you can run one of the following command in your terminal
 1. Run testing
