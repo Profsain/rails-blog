@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :fetch_user, only: %i[index show]
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
@@ -17,6 +18,9 @@ class PostsController < ApplicationController
     @post.comments_counter = 0
     @post.user = @user
 
+    puts '======================='
+    puts @user
+    puts '======================='
     if @post.valid?
       @post.save
 
